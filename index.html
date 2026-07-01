@@ -3,47 +3,54 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ammar Adel — Mechatronics & Robotics Engineer</title>
-<meta name="description" content="Portfolio of Ammar Adel, Mechatronics & Robotics Engineer specializing in control systems, CAD design, and AI for robotics.">
+<title>Ammar Adel Abdelwahab</title>
+<meta name="description" content="Portfolio of Ammar Adel Abdelwahab, Mechatronics & Robotics Engineer specializing in control systems, CAD design, and AI for robotics.">
+
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🤓</text></svg>">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700;800&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
   :root{
-    --radius: 3px;
-    --transition: 220ms ease;
+    --radius: 6px;
+    --transition: cubic-bezier(0.4, 0, 0.2, 1) 320ms;
+    --animation-fade: panelFadeIn 350ms cubic-bezier(0.4, 0, 0.2, 1) forwards;
   }
 
-  /* ===== Light theme: "diazo print" — blue ink on drafting paper ===== */
+  /* ===== Light theme: Engineering Drafting Sheet ===== */
   html[data-theme="light"]{
-    --bg: #F4F1E6;
-    --bg-alt: #ECE7D6;
-    --paper: #FBFAF3;
-    --ink: #16305C;
-    --ink-soft: #3C5A85;
-    --ink-faint: #6E85A6;
-    --accent: #C1440E;
-    --accent-soft: #E0704A;
-    --grid-line: rgba(22,48,92,0.08);
-    --hairline: rgba(22,48,92,0.22);
-    --shadow: rgba(22,48,92,0.12);
-    --focus: #C1440E;
+    --bg: #F9F8F3;
+    --bg-alt: #F1EFE6;
+    --paper: #FFFFFF;
+    --ink: #11223F;
+    --ink-soft: #3A506B;
+    --ink-faint: #6C7D93;
+    --accent: #D94111;
+    --accent-soft: #F16A43;
+    --grid-line: rgba(17,34,63,0.05);
+    --hairline: rgba(17,34,63,0.15);
+    --shadow: rgba(17,34,63,0.06);
+    --focus: #D94111;
+    --spotlight: rgba(217, 65, 17, 0.035);
   }
 
-  /* ===== Dark theme: "cyanotype" — white ink on blueprint blue ===== */
+  /* ===== Dark theme: High-End Technical Blueprint ===== */
   html[data-theme="dark"]{
-    --bg: #0C2544;
-    --bg-alt: #10315A;
-    --paper: #123761;
-    --ink: #EAF2FB;
-    --ink-soft: #B9D2EC;
-    --ink-faint: #7FA0C6;
-    --accent: #FFA35E;
-    --accent-soft: #FFC08A;
-    --grid-line: rgba(234,242,251,0.08);
-    --hairline: rgba(234,242,251,0.25);
-    --shadow: rgba(0,0,0,0.35);
-    --focus: #FFA35E;
+    --bg: #0A192F;
+    --bg-alt: #102441;
+    --paper: #172A45;
+    --ink: #F4F7FB;
+    --ink-soft: #BCD0E6;
+    --ink-faint: #809BB8;
+    --accent: #FF9F54;
+    --accent-soft: #FFC294;
+    --grid-line: rgba(244,247,251,0.04);
+    --hairline: rgba(244,247,251,0.18);
+    --shadow: rgba(0,0,0,0.25);
+    --focus: #FF9F54;
+    --spotlight: rgba(255, 159, 84, 0.05);
   }
 
   *{ box-sizing: border-box; }
@@ -52,21 +59,34 @@
   body{
     margin:0;
     background:
-      repeating-linear-gradient(0deg, var(--grid-line) 0, var(--grid-line) 1px, transparent 1px, transparent 32px),
-      repeating-linear-gradient(90deg, var(--grid-line) 0, var(--grid-line) 1px, transparent 1px, transparent 32px),
+      repeating-linear-gradient(0deg, var(--grid-line) 0, var(--grid-line) 1px, transparent 1px, transparent 24px),
+      repeating-linear-gradient(90deg, var(--grid-line) 0, var(--grid-line) 1px, transparent 1px, transparent 24px),
       var(--bg);
     color: var(--ink);
     font-family: 'Inter', system-ui, sans-serif;
-    line-height: 1.55;
+    line-height: 1.6;
     transition: background var(--transition), color var(--transition);
     min-height: 100vh;
+    position: relative;
+    overflow-x: hidden;
   }
 
-  h1,h2,h3, .mono{
+  /* Radar Beam Field Layer */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    pointer-events: none;
+    z-index: 2;
+    background: radial-gradient(450px circle at var(--mouse-x, 0px) var(--mouse-y, 0px), var(--spotlight), transparent 80%);
+  }
+
+  h1,h2,h3, .mono {
     font-family: 'JetBrains Mono', ui-monospace, monospace;
+    letter-spacing: -0.02em;
   }
 
-  a{ color: var(--accent); text-decoration-color: var(--accent-soft); }
+  a{ color: var(--accent); text-decoration-color: var(--accent-soft); transition: color var(--transition); position: relative; z-index: 5; }
   a:hover{ color: var(--accent-soft); }
 
   .skip-link{
@@ -76,16 +96,12 @@
   }
   .skip-link:focus{ left: 12px; top: 12px; }
 
-  :focus-visible{
-    outline: 3px solid var(--focus);
-    outline-offset: 2px;
-  }
-
-  /* ===== Shell layout ===== */
   .shell{
-    max-width: 1180px;
+    max-width: 1100px;
     margin: 0 auto;
-    padding: 28px 24px 0;
+    padding: 40px 24px 0;
+    position: relative;
+    z-index: 10;
   }
 
   .topbar{
@@ -93,141 +109,137 @@
     align-items:center;
     justify-content:space-between;
     gap: 16px;
-    padding-bottom: 20px;
+    padding-bottom: 24px;
     border-bottom: 1px solid var(--hairline);
     flex-wrap: wrap;
   }
 
   .brand{
-    display:flex; align-items:center; gap:14px;
+    display:flex; align-items:center; gap:16px;
   }
 
   .avatar{
-    width: 52px; height:52px; border-radius: 50%;
-    background: var(--accent);
-    color:#fff;
+    width: 60px; height: 60px; border-radius: 50%;
+    background: var(--bg-alt);
     display:flex; align-items:center; justify-content:center;
-    font-weight:800; font-size: 1.05rem; letter-spacing: 0.03em;
+    font-size: 2rem;
     border: 2px solid var(--ink);
     flex-shrink:0;
     overflow:hidden;
+    box-shadow: 0 4px 10px var(--shadow);
+    transition: transform var(--transition);
   }
-  .avatar img{ width:100%; height:100%; object-fit:cover; display:block; }
+  .avatar:hover {
+    transform: rotate(12deg) scale(1.05);
+  }
 
   .brand-text .name{
-    font-size: 1.1rem; font-weight: 800; margin:0; letter-spacing: 0.01em;
+    font-size: 1.3rem; font-weight: 800; margin:0; letter-spacing: -0.01em; color: var(--ink);
   }
   .brand-text .role{
-    margin:2px 0 0; font-size: 0.82rem; color: var(--ink-soft);
-    text-transform: uppercase; letter-spacing: 0.08em;
-  }
-
-  .theme-toggle{
-    display:flex; align-items:center; gap:10px;
-    font-family:'JetBrains Mono', monospace;
-    font-size: 0.72rem;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--ink-soft);
+    margin:4px 0 0; font-size: 0.78rem; color: var(--ink-soft);
+    text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600;
   }
 
   .switch{
-    position:relative; width:52px; height:26px;
+    position:relative; width:52px; height:28px;
     border-radius: 999px;
-    background: var(--paper);
+    background: var(--bg-alt);
     border: 2px solid var(--ink);
     cursor:pointer;
     padding:0;
+    transition: background var(--transition);
   }
   .switch .knob{
-    position:absolute; top:2px; left:2px;
+    position:absolute; top:3px; left:3px;
     width:18px; height:18px; border-radius:50%;
     background: var(--accent);
-    transition: transform var(--transition);
+    transition: transform var(--transition), background var(--transition);
   }
   html[data-theme="dark"] .switch .knob{ transform: translateX(24px); }
 
-  /* ===== Hero ===== */
+  /* ===== Hero Section with Text-Justification & Layout Alignment ===== */
   .hero{
-    padding: 34px 0 26px;
+    padding: 48px 0 32px;
     display:grid;
     grid-template-columns: 1fr auto;
-    gap: 24px;
-    align-items: start;
+    gap: 40px;
+    align-items: center;
   }
 
   .hero .eyebrow{
-    font-size:0.72rem; text-transform: uppercase; letter-spacing: 0.18em;
-    color: var(--accent); margin: 0 0 10px; font-weight:700;
-  }
-
-  .hero h1{
-    font-size: clamp(1.8rem, 3.2vw, 2.6rem);
-    margin: 0 0 10px;
-    line-height:1.15;
+    font-size:0.75rem; text-transform: uppercase; letter-spacing: 0.15em;
+    color: var(--accent); margin: 0 0 12px; font-weight:700;
   }
 
   .hero p.lede{
-    max-width: 620px;
+    max-width: 760px;
     color: var(--ink-soft);
-    font-size: 1rem;
-    margin: 0 0 18px;
+    font-size: 1.12rem;
+    margin: 0 0 28px;
+    line-height: 1.7;
+    text-align: justify;
+    text-justify: inter-word;
   }
 
   .contact-row{
-    display:flex; flex-wrap:wrap; gap: 10px;
+    display:flex; flex-wrap:wrap; gap: 12px;
   }
   .contact-row a{
-    display:inline-flex; align-items:center; gap:6px;
+    display:inline-flex; align-items:center; gap:8px;
     font-family:'JetBrains Mono', monospace;
-    font-size: 0.76rem;
-    padding: 7px 12px;
+    font-size: 0.78rem;
+    padding: 10px 16px;
     border: 1px solid var(--hairline);
     border-radius: var(--radius);
     color: var(--ink);
     text-decoration:none;
     background: var(--paper);
-    transition: border-color var(--transition), color var(--transition);
+    box-shadow: 0 2px 5px var(--shadow);
+    transition: border-color var(--transition), color var(--transition), transform 200ms ease;
   }
-  .contact-row a:hover{ border-color: var(--accent); color: var(--accent); }
+  .contact-row a:hover{ border-color: var(--accent); color: var(--accent); transform: translateY(-3px); }
 
+  /* Expanded Hero Photo Container Dimensions (1.5x) */
   .hero-photo{
-    width: 150px; height: 150px;
+    width: 315px; height: 315px;
     border-radius: 50%;
     background: var(--paper);
     border: 3px solid var(--ink);
-    display:flex; align-items:center; justify-content:center;
-    color: var(--ink-faint);
-    font-family:'JetBrains Mono', monospace;
-    font-size: 0.65rem;
-    text-align:center;
     overflow:hidden;
     flex-shrink:0;
+    box-shadow: 0 8px 24px var(--shadow);
+    transition: transform var(--transition), box-shadow var(--transition);
+  }
+  .hero-photo:hover {
+    transform: scale(1.03);
+    box-shadow: 0 12px 32px var(--shadow);
   }
   .hero-photo img{ width:100%; height:100%; object-fit:cover; display:block; }
 
-  /* ===== Tabs ===== */
+  /* ===== Tabs Framework ===== */
   .tabs-nav{
     display:flex; flex-wrap:wrap; gap:4px;
     border-bottom: 1px solid var(--hairline);
-    margin-top: 6px;
+    margin-top: 16px;
   }
   .tab-btn{
     font-family:'JetBrains Mono', monospace;
-    font-size: 0.78rem;
+    font-size: 0.8rem;
     text-transform: uppercase;
     letter-spacing: 0.05em;
     background: transparent;
     border: 1px solid transparent;
     border-bottom: none;
-    padding: 11px 18px;
+    padding: 12px 20px;
     color: var(--ink-soft);
     cursor: pointer;
     border-radius: var(--radius) var(--radius) 0 0;
     position:relative;
     top:1px;
+    transition: color 200ms ease, background-color 200ms ease, transform 150ms ease;
   }
-  .tab-btn:hover{ color: var(--ink); }
+  .tab-btn:hover{ color: var(--ink); background-color: var(--bg-alt); transform: translateY(-1px); }
   .tab-btn[aria-selected="true"]{
     color: var(--accent);
     background: var(--paper);
@@ -240,171 +252,203 @@
     background: var(--paper);
     border: 1px solid var(--hairline);
     border-top: none;
-    padding: 32px clamp(18px, 4vw, 40px) 40px;
+    padding: 40px clamp(20px, 5vw, 48px);
     border-radius: 0 0 var(--radius) var(--radius);
+    box-shadow: 0 10px 30px var(--shadow);
+  }
+  
+  .tab-panel:not([hidden]) {
+    display: block;
+    animation: var(--animation-fade);
   }
   .tab-panel[hidden]{ display:none; }
 
+  @keyframes panelFadeIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
   section h2.section-title{
-    font-size: 1.3rem;
-    margin: 0 0 4px;
+    font-size: 1.5rem;
+    margin: 0 0 6px;
   }
   .section-sub{
     color: var(--ink-faint);
-    font-size: 0.82rem;
+    font-size: 0.85rem;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    margin: 0 0 24px;
+    margin: 0 0 32px;
   }
 
-  /* ===== Cards / entries ===== */
+  /* ===== Card Layout ===== */
+  .card-grid{
+    display:grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 24px;
+  }
+  .card{
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius);
+    padding: 24px;
+    background: var(--bg-alt);
+    display:flex; flex-direction:column; gap:14px;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.02);
+    transition: border-color var(--transition), transform var(--transition), box-shadow var(--transition);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: radial-gradient(80px circle at var(--c-mouse-x, -999px) var(--c-mouse-y, -999px), rgba(255,255,255,0.06), transparent 80%);
+    pointer-events: none;
+  }
+  
+  .card:hover{ 
+    border-color: var(--accent); 
+    transform: translateY(-4px);
+    box-shadow: 0 6px 20px var(--shadow);
+  }
+  
+  .card h3{ font-size: 1.15rem; margin:0; color: var(--ink); border-bottom: 1px dashed var(--hairline); padding-bottom: 6px; }
+  .card p{ font-size: 0.92rem; color: var(--ink-soft); margin:0; flex-grow:1; line-height: 1.6; text-align: justify; text-justify: inter-word; }
+  
+  .skills-learned-block {
+    margin-top: 4px;
+  }
+  .skills-learned-title {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 6px;
+    font-weight: 700;
+  }
+  .tag-row{ display:flex; flex-wrap:wrap; gap:6px; }
+  .tag{
+    font-family:'JetBrains Mono', monospace;
+    font-size: 0.68rem;
+    text-transform: uppercase;
+    padding: 3px 10px;
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius);
+    color: var(--ink-soft);
+    background: var(--paper);
+    font-weight: 500;
+    transition: border-color 150ms ease, color 150ms ease;
+  }
+  .tag:hover {
+    border-color: var(--accent-soft);
+    color: var(--ink);
+  }
+
+  /* ===== Experience Timeline ===== */
   .entry{
-    padding: 18px 0;
+    padding: 28px 0;
     border-top: 1px dashed var(--hairline);
   }
   .entry:first-of-type{ border-top: none; padding-top: 0; }
 
   .entry-head{
     display:flex; justify-content:space-between; align-items:baseline;
-    gap: 12px; flex-wrap:wrap;
+    gap: 16px; flex-wrap:wrap;
   }
-  .entry-title{ font-weight:700; font-size: 1.02rem; margin:0; }
-  .entry-org{ color: var(--ink-soft); font-size: 0.92rem; }
+  .entry-title{ font-weight:700; font-size: 1.15rem; margin:0; color: var(--ink); }
+  .entry-org{ color: var(--ink-soft); font-size: 1rem; margin-top: 4px; font-weight: 500; }
   .entry-date{
     font-family:'JetBrains Mono', monospace;
-    font-size: 0.72rem;
+    font-size: 0.78rem;
     color: var(--accent);
     white-space:nowrap;
     text-transform: uppercase;
+    font-weight: 600;
   }
-  .entry ul{ margin: 10px 0 0; padding-left: 20px; color: var(--ink-soft); font-size: 0.92rem; }
-  .entry li{ margin-bottom: 6px; }
+  .entry ul{ margin: 16px 0 0; padding-left: 20px; color: var(--ink-soft); font-size: 0.95rem; }
+  .entry li{ margin-bottom: 10px; text-align: justify; text-justify: inter-word; }
 
-  .card-grid{
-    display:grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 16px;
-  }
-  .card{
-    border: 1px solid var(--hairline);
-    border-radius: var(--radius);
-    padding: 16px;
-    background: var(--bg-alt);
-    display:flex; flex-direction:column; gap:8px;
-  }
-  .card h3{ font-size: 0.95rem; margin:0; }
-  .card p{ font-size: 0.86rem; color: var(--ink-soft); margin:0; flex-grow:1; }
-  .tag-row{ display:flex; flex-wrap:wrap; gap:6px; }
-  .tag{
-    font-family:'JetBrains Mono', monospace;
-    font-size: 0.65rem;
-    text-transform: uppercase;
-    padding: 3px 8px;
-    border: 1px solid var(--hairline);
-    border-radius: 999px;
-    color: var(--ink-faint);
-  }
-  .card a.card-link{
-    font-family:'JetBrains Mono', monospace;
-    font-size: 0.72rem;
-    text-transform: uppercase;
-  }
-
-  .skill-group{ margin-bottom: 20px; }
+  .skill-group{ margin-bottom: 24px; }
   .skill-group h3{
-    font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.08em;
-    color: var(--accent); margin: 0 0 8px;
+    font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.08em;
+    color: var(--accent); margin: 0 0 12px;
   }
   .pill-row{ display:flex; flex-wrap:wrap; gap:8px; }
   .pill{
-    font-size: 0.82rem;
-    padding: 6px 12px;
+    font-size: 0.88rem;
+    padding: 8px 14px;
     border: 1px solid var(--hairline);
     border-radius: var(--radius);
     color: var(--ink);
     background: var(--bg-alt);
+    transition: border-color var(--transition), transform 150ms ease, background-color var(--transition);
+    cursor: default;
   }
+  .pill:hover{ border-color: var(--accent); transform: scale(1.03); background-color: var(--paper); }
 
-  .pub-entry{ padding: 16px 0; border-top: 1px dashed var(--hairline); }
+  .pub-entry{ padding: 24px 0; border-top: 1px dashed var(--hairline); }
   .pub-entry:first-of-type{ border-top:none; padding-top:0; }
   .pub-tag{
     display:inline-block;
     font-family:'JetBrains Mono', monospace;
-    font-size: 0.65rem;
+    font-size: 0.68rem;
     text-transform:uppercase;
     color: var(--accent);
     border: 1px solid var(--accent);
     border-radius: 999px;
-    padding: 2px 9px;
-    margin-bottom: 8px;
+    padding: 3px 10px;
+    margin-bottom: 12px;
+    font-weight: 500;
   }
 
-  .honor-grid{
-    display:grid;
-    grid-template-columns: repeat(auto-fill, minmax(240px,1fr));
-    gap:14px;
+  /* Staggered Concentric Radar Rings */
+  .radar-echo {
+    position: fixed;
+    border: 1.5px solid var(--accent);
+    border-radius: 50%;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    z-index: 999;
+    opacity: 0;
+    animation: radarExpansion 700ms cubic-bezier(0.25, 1, 0.5, 1) forwards;
   }
-  .honor{
-    border-left: 3px solid var(--accent);
-    padding: 4px 0 4px 14px;
-  }
-  .honor .h-title{ font-weight:700; font-size:0.92rem; }
-  .honor .h-org{ color: var(--ink-faint); font-size: 0.78rem; }
 
-  /* ===== Title block (signature element) ===== */
-  .titleblock{
-    margin: 40px 0 24px;
-    border: 1px solid var(--hairline);
-    border-radius: var(--radius);
-    display:grid;
-    grid-template-columns: repeat(4, 1fr);
-    font-family:'JetBrains Mono', monospace;
-    font-size: 0.68rem;
-    text-transform: uppercase;
-    background: var(--paper);
+  @keyframes radarExpansion {
+    0% { width: 0px; height: 0px; opacity: 0.8; }
+    50% { opacity: 0.3; }
+    100% { width: 160px; height: 160px; opacity: 0; }
   }
-  .titleblock div{
-    padding: 10px 14px;
-    border-right: 1px solid var(--hairline);
-  }
-  .titleblock div:last-child{ border-right:none; }
-  .titleblock .label{ color: var(--ink-faint); display:block; margin-bottom:4px; letter-spacing:0.08em; }
-  .titleblock .value{ color: var(--ink); font-size: 0.78rem; }
 
   footer.site-footer{
     text-align:center;
-    padding: 24px 0 40px;
+    padding: 40px 0 40px;
     color: var(--ink-faint);
-    font-size: 0.76rem;
+    font-size: 0.78rem;
     font-family:'JetBrains Mono', monospace;
+    border-top: 1px solid var(--hairline);
+    margin-top: 48px;
   }
 
   @media (max-width: 720px){
-    .hero{ grid-template-columns: 1fr; }
-    .hero-photo{ width:110px; height:110px; order:-1; }
-    .titleblock{ grid-template-columns: repeat(2, 1fr); }
-  }
-
-  @media (prefers-reduced-motion: reduce){
-    *{ transition: none !important; scroll-behavior: auto !important; }
+    .hero{ grid-template-columns: 1fr; gap: 24px; text-align: center; }
+    .hero-photo{ width:200px; height:200px; margin: 0 auto; order:-1; }
+    .contact-row{ justify-content: center; }
   }
 </style>
 </head>
-<body data-theme-target>
-<a class="skip-link" href="#main">Skip to content</a>
+<body>
 
 <div class="shell">
 
   <header class="topbar">
     <div class="brand">
-      <div class="avatar" aria-hidden="true">AA</div>
+      <div class="avatar" aria-hidden="true">🤖</div>
       <div class="brand-text">
-        <p class="name">Ammar Adel</p>
+        <p class="name">Ammar Adel Abdelwahab</p>
         <p class="role">Mechatronics &amp; Robotics Engineer</p>
       </div>
     </div>
     <div class="theme-toggle">
-      <span id="theme-label">Light print</span>
       <button class="switch" id="themeSwitch" role="switch" aria-checked="false" aria-label="Toggle dark theme">
         <span class="knob"></span>
       </button>
@@ -413,241 +457,339 @@
 
   <section class="hero">
     <div>
-      <p class="eyebrow">Cairo, Egypt · Available for R&D &amp; Robotics roles</p>
-      <h1>Designing, controlling, and shipping robots — from CAD to closed-loop code.</h1>
-      <p class="lede">B.Sc. Mechatronics &amp; Robotics Engineering, E-JUST (CGPA 3.8/4.0). I work across the full stack of a robot: mechanical design in SolidWorks, closed-loop control (PID/Fuzzy/Kalman), and AI/RL for perception and decision-making — currently building autonomous agricultural robots and publishing on fast-tracking gimbal control.</p>
+      <p class="eyebrow">📍 Cairo, Egypt · Open to Work 🟢</p>
+      <p class="lede">High-achieving Mechatronics & Robotics Engineering graduate (CGPA 3.8/4.0) and published researcher with an accepted paper at IEEE CoDIT 2026 focusing on fuzzy control for real-time tracking systems. Specializing in the end-to-end integration of artificial intelligence, computer vision, and deep learning into autonomous robotic systems. Proven track record bridging robust physical hardware with intelligent systems code, utilizing an expert technical stack including Python, ROS 2, and advanced CAD modeling/FEA via SolidWorks. Dedicated to leveraging neural networks, sensor fusion, and advanced mechanical design to build and scale cutting-edge applications in autonomous robotics.</p>
       <div class="contact-row">
-        <a href="mailto:ammaradelabdeltwab@gmail.com">✉ Email</a>
-        <a href="https://linkedin.com/in/ammaradel" target="_blank" rel="noopener">LinkedIn</a>
-        <a href="https://github.com/ammaradel-1" target="_blank" rel="noopener">GitHub</a>
-        <a href="https://grabcad.com/ammar.adel-1" target="_blank" rel="noopener">GrabCAD</a>
-        <a href="#" id="cvLink">Download CV (PDF)</a>
+        <a href="mailto:ammaradelabdeltwab@gmail.com"><i class="fa-regular fa-envelope"></i> Email</a>
+        <a href="https://linkedin.com/in/ammaradel" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+        <a href="https://github.com/ammaradel-1" target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> GitHub</a>
+        <a href="https://grabcad.com/ammar.adel-1" target="_blank" rel="noopener"><i class="fa-solid fa-cube"></i> GrabCAD</a>
+        <a href="Ammar_Adel_CV.pdf" download="Ammar_Adel_CV.pdf"><i class="fa-solid fa-file-pdf"></i> Download CV</a>
       </div>
     </div>
-    <div class="hero-photo" aria-hidden="true">Replace<br>with<br>photo</div>
+    <div class="hero-photo">
+      <img src="profile.jpg" alt="Ammar Adel Abdelwahab">
+    </div>
   </section>
 
   <nav class="tabs-nav" role="tablist" aria-label="Portfolio sections">
-    <button class="tab-btn" role="tab" id="tab-about" aria-controls="panel-about" aria-selected="true">About</button>
-    <button class="tab-btn" role="tab" id="tab-experience" aria-controls="panel-experience" aria-selected="false" tabindex="-1">Experience</button>
-    <button class="tab-btn" role="tab" id="tab-projects" aria-controls="panel-projects" aria-selected="false" tabindex="-1">Projects</button>
-    <button class="tab-btn" role="tab" id="tab-publications" aria-controls="panel-publications" aria-selected="false" tabindex="-1">Publications</button>
-    <button class="tab-btn" role="tab" id="tab-skills" aria-controls="panel-skills" aria-selected="false" tabindex="-1">Skills</button>
-    <button class="tab-btn" role="tab" id="tab-honors" aria-controls="panel-honors" aria-selected="false" tabindex="-1">Honors</button>
-    <button class="tab-btn" role="tab" id="tab-contact" aria-controls="panel-contact" aria-selected="false" tabindex="-1">Contact</button>
+    <button class="tab-btn" role="tab" id="tab-about" aria-controls="panel-about" aria-selected="true">🎓 Education</button>
+    <button class="tab-btn" role="tab" id="tab-experience" aria-controls="panel-experience" aria-selected="false" tabindex="-1">💼 Experience</button>
+    <button class="tab-btn" role="tab" id="tab-projects" aria-controls="panel-projects" aria-selected="false" tabindex="-1">📁 Projects</button>
+    <button class="tab-btn" role="tab" id="tab-publications" aria-controls="panel-publications" aria-selected="false" tabindex="-1">📄 Publications</button>
+    <button class="tab-btn" role="tab" id="tab-skills" aria-controls="panel-skills" aria-selected="false" tabindex="-1">🛠️ Skills</button>
+    <button class="tab-btn" role="tab" id="tab-honors" aria-controls="panel-honors" aria-selected="false" tabindex="-1">🏆 Honors</button>
+    <button class="tab-btn" role="tab" id="tab-contact" aria-controls="panel-contact" aria-selected="false" tabindex="-1">📞 Contact</button>
   </nav>
 
   <main id="main">
 
-    <!-- ABOUT -->
     <section class="tab-panel" id="panel-about" role="tabpanel" aria-labelledby="tab-about" tabindex="0">
-      <h2 class="section-title">About</h2>
-      <p class="section-sub">Education &amp; overview</p>
+      <h2 class="section-title">🎓 Education</h2>
+      <p class="section-sub">Academic Credentials &amp; Overview</p>
 
       <div class="entry">
         <div class="entry-head">
           <div>
-            <p class="entry-title">B.Sc. Mechatronics and Robotics Engineering</p>
-            <p class="entry-org">Egypt-Japan University of Science and Technology (E-JUST), Alexandria</p>
+            <p class="entry-title">Bachelor of Science in Mechatronics and Robotics Engineering</p>
+            <p class="entry-org">Egypt-Japan University of Science and Technology (E-JUST)</p>
           </div>
           <span class="entry-date">Sep 2021 – Mar 2026</span>
         </div>
+        <p style="margin: 4px 0 0; font-size: 0.92rem; color: var(--ink-soft); font-family: 'JetBrains Mono', monospace;"><i class="fa-solid fa-location-dot"></i> Alexandria, Egypt</p>
         <ul>
-          <li>CGPA 3.8 / 4.0 — Dean's List &amp; Academic Excellence Honor.</li>
-          <li>Graduation project (Grade A+): <em>Design and Control of a Fast-Tracking Gimbal for Unstable Environments</em> — a 3-DOF autonomous tracking system with YOLOv8 detection and Kalman-filtered IMU fusion, closed-loop fuzzy PID control deployed on a Raspberry Pi 4. Published at IEEE CoDIT 2026.</li>
-          <li>Coursework: Automatic Control, Robotics, AI in Robotics, Mobile Robots, Mechatronics System Design, Mechanical Vibrations, Mechanical Design, Pneumatics &amp; Hydraulics, Embedded Systems, MEMS.</li>
+          <li><strong>CGPA 3.8 / 4.0 — Dean's List &amp; Academic Excellence Distinction.</strong></li>
+          <li><strong>Graduation Project (Grade A+): Design and Control of a Fast-Tracking Gimbal for Unstable Environments</strong> — Engineered a 3-DOF tracking system incorporating YOLOv8 vision tracking and Kalman-filtered IMU fusion with real-time closed-loop fuzzy PID algorithms on a Raspberry Pi 4.</li>
+          <li><strong>Relevant Coursework:</strong> Automatic Control, Robotics Kinematics, Mobile Robots, Mechatronics System Design, AI in Robotics, Mechanical Design, Vibrations, Pneumatics &amp; Hydraulics, Embedded Systems.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="tab-panel" id="panel-experience" role="tabpanel" aria-labelledby="tab-experience" tabindex="0" hidden>
+      <h2 class="section-title">💼 Professional Experience</h2>
+      <p class="section-sub">Industrial R&amp;D &amp; Engineering Roles</p>
+
+      <div class="entry">
+        <div class="entry-head">
+          <div>
+            <p class="entry-title">Mechatronics &amp; Mechanical Design Engineer</p>
+            <p class="entry-org">Oz-Tech Startup</p>
+          </div>
+          <span class="entry-date">May 2025 – Present</span>
+        </div>
+        <p style="margin: 4px 0 0; font-size: 0.92rem; color: var(--ink-soft); font-family: 'JetBrains Mono', monospace;"><i class="fa-solid fa-location-dot"></i> New Cairo, Egypt</p>
+        <ul>
+          <li><strong>Agricultural Robotics Development:</strong> Led the mechanical design and end-to-end manufacturing of autonomous agricultural systems, specifically Transplanter and Weeding robots.</li>
+          <li><strong>Advanced CAD &amp; Drafting:</strong> Engineered 3D CAD models and 2D manufacturing drawings using SolidWorks and AutoCAD to transition prototypes into scalable production.</li>
+          <li><strong>Actuation &amp; Manufacturing:</strong> Designed, simulated, and integrated complex pneumatic and hydraulic systems; managed part fabrication and assembly workflows.</li>
+          <li><strong>Cross-functional Integration:</strong> Collaborated with software and electrical engineering teams to integrate motion control systems, sensors, and mechanical hardware.</li>
         </ul>
       </div>
 
       <div class="entry">
         <div class="entry-head">
           <div>
-            <p class="entry-title">How I work</p>
+            <p class="entry-title">R&amp;D Mechanical Engineer</p>
+            <p class="entry-org">Ezz Medical Industries</p>
           </div>
-        </div>
-        <ul>
-          <li><strong>Mechanical:</strong> SolidWorks, CATIA, AutoCAD, ANSYS, DFMA, sheet metal, pneumatics &amp; hydraulics.</li>
-          <li><strong>Control:</strong> PID, Fuzzy Logic, Fuzzy‑PID, Kalman &amp; Extended Kalman Filters, sensor fusion, NI myRIO / LabVIEW.</li>
-          <li><strong>Robotics software:</strong> ROS 2, Gazebo, inverse/forward kinematics, path planning, embedded C on ESP32/AVR/Raspberry Pi.</li>
-          <li><strong>AI:</strong> PyTorch, TensorFlow, YOLO-based perception, reinforcement learning (DQN).</li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- EXPERIENCE -->
-    <section class="tab-panel" id="panel-experience" role="tabpanel" aria-labelledby="tab-experience" tabindex="0" hidden>
-      <h2 class="section-title">Experience</h2>
-      <p class="section-sub">Industry &amp; research roles</p>
-
-      <div class="entry">
-        <div class="entry-head">
-          <div><p class="entry-title">Mechatronics &amp; Mechanical Design Engineer</p><p class="entry-org">Oz-Tech Startup — New Cairo, Egypt</p></div>
-          <span class="entry-date">May 2025 – Present</span>
-        </div>
-        <ul>
-          <li>Led mechanical design and end-to-end manufacturing of autonomous agricultural robots — a transplanter and a weeding robot — from prototype to production-ready hardware.</li>
-          <li>Designed, simulated, and integrated pneumatic and hydraulic actuation systems for field-deployed platforms.</li>
-          <li>Collaborated with software and electrical teams to integrate motion control, sensors, and mechanical hardware into cohesive autonomous systems.</li>
-        </ul>
-      </div>
-
-      <div class="entry">
-        <div class="entry-head">
-          <div><p class="entry-title">R&amp;D Mechanical Engineer</p><p class="entry-org">Ezz Medical Industries — Mohandessin, Cairo</p></div>
           <span class="entry-date">Dec 2025 – Feb 2026</span>
         </div>
+        <p style="margin: 4px 0 0; font-size: 0.92rem; color: var(--ink-soft); font-family: 'JetBrains Mono', monospace;"><i class="fa-solid fa-location-dot"></i> Mohandessin, Cairo, Egypt</p>
         <ul>
-          <li>Verified 2D manufacturing drawings and 3D CAD designs for part functionality and assembly feasibility on EZvent, a mechatronic medical ventilator system.</li>
-          <li>Directed QA/QC inspections on 500+ mechanical components under ISO 13485 quality management standards.</li>
+          <li><strong>Medical Device QA:</strong> Directed quality assurance (QA) protocols for <em>EZvent</em>, the first fully developed and commercially licensed medical ventilator in the Middle East.</li>
+          <li><strong>ISO Compliance &amp; QC:</strong> Executed quality control (QC) inspections on 500+ mechanical components, ensuring strict compliance with ISO 13485 Quality Management System standards.</li>
+          <li><strong>Design Verification:</strong> Verified 2D manufacturing drawings and 3D CAD designs for part functionality, GD&amp;T tolerancing, and assembly feasibility within the system architecture.</li>
+          <li><strong>Inspection Techniques:</strong> Performed standardized testing and precision inspection techniques to validate the safety and efficacy of machined parts prior to final assembly.</li>
         </ul>
       </div>
 
       <div class="entry">
         <div class="entry-head">
-          <div><p class="entry-title">Undergraduate Researcher, Robotics Lab</p><p class="entry-org">E-JUST · Advisor: Prof. Ayman A. Nada</p></div>
-          <span class="entry-date">Sep 2024 – Jun 2026</span>
+          <div>
+            <p class="entry-title">R&amp;D Mechanical Design Intern</p>
+            <p class="entry-org">Al Araby Group</p>
+          </div>
+          <span class="entry-date">July 2025</span>
         </div>
+        <p style="margin: 4px 0 0; font-size: 0.92rem; color: var(--ink-soft); font-family: 'JetBrains Mono', monospace;"><i class="fa-solid fa-location-dot"></i> Banha, Monufia, Egypt</p>
         <ul>
-          <li>Developed kinematic models and mechanical CAD for a 3-DOF real-time gimbal system engineered to track high-speed targets.</li>
-          <li>Integrated the gimbal with a Stewart platform to simulate unstable dynamic environments and validate vision-IMU velocity control frameworks.</li>
-          <li>Result: <em>Fuzzy Logic Control for Fast-Tracking Gimbals in Velocity Space</em>, accepted at IEEE CoDIT 2026.</li>
+          <li><strong>Component Design &amp; Manufacturing:</strong> Collaborated with structural and thermal teams to optimize AC unit housings utilizing sheet metal and plastic components.</li>
+          <li><strong>Tooling &amp; Die Applications:</strong> Assisted in designing and reviewing stamping dies and injection molds for high-volume manufacturing.</li>
+          <li><strong>3D Modeling &amp; Drafting:</strong> Engineered 3D part models, mechanical assemblies, and 2D technical drawings for manufacturing utilizing CATIA.</li>
         </ul>
       </div>
 
       <div class="entry">
         <div class="entry-head">
-          <div><p class="entry-title">Control Systems Researcher</p><p class="entry-org">E-JUST · Advisor: Prof. Ayman A. Nada</p></div>
-          <span class="entry-date">Feb 2024 – Present</span>
+          <div>
+            <p class="entry-title">Mechatronics Engineer Intern</p>
+            <p class="entry-org">Military Factory 200</p>
+          </div>
+          <span class="entry-date">Sep 2024</span>
         </div>
+        <p style="margin: 4px 0 0; font-size: 0.92rem; color: var(--ink-soft); font-family: 'JetBrains Mono', monospace;"><i class="fa-solid fa-location-dot"></i> 10th of Ramadan, Sharkia, Egypt</p>
         <ul>
-          <li>Scaled an Automatic Control course project into a research initiative on stabilization and dynamic control of a two-wheeled balancing robot.</li>
-          <li>Engineered and deployed real-time closed-loop control algorithms using NI myRIO, LabVIEW, and direct IMU feedback.</li>
-          <li>Journal submission in preparation, based on ongoing system optimization and experimental data collection.</li>
-        </ul>
-      </div>
-
-      <div class="entry">
-        <div class="entry-head">
-          <div><p class="entry-title">AI &amp; Deep Learning — Afretec Summer Training</p><p class="entry-org">American University in Cairo</p></div>
-          <span class="entry-date">Jul 2024</span>
-        </div>
-        <ul>
-          <li>Studied CNNs, RNNs, and BERT architectures with TensorFlow and PyTorch; applied ensemble methods, hyperparameter tuning, and data balancing for imbalanced datasets.</li>
-          <li>Deployed trained ML models onto microcontrollers in hands-on, hardware-in-the-loop workshops.</li>
+          <li><strong>Advanced Manufacturing:</strong> Trained in industrial manufacturing processes including CNC machining, laser cutting, plasma cutting, and water jet cutting.</li>
+          <li><strong>Laboratory Testing:</strong> Conducted material property testing and calibrated precision measurement tools within chemical and mechanical laboratories.</li>
+          <li><strong>Quality Assurance &amp; NDT:</strong> Assisted in heavy engine assembly and performed Non-Destructive Testing (NDT) in strict compliance with ISO 9001, ISO 14001, and ISO 45001 standards.</li>
         </ul>
       </div>
     </section>
 
-    <!-- PROJECTS -->
     <section class="tab-panel" id="panel-projects" role="tabpanel" aria-labelledby="tab-projects" tabindex="0" hidden>
-      <h2 class="section-title">Projects</h2>
-      <p class="section-sub">Selected builds — replace the placeholder links with your real GitHub / YouTube / GrabCAD URLs</p>
+      <h2 class="section-title">📁 Selected Engineering Projects</h2>
+      <p class="section-sub">Technical Project Gallery &amp; Core Subsystems</p>
 
       <div class="card-grid">
         <div class="card">
-          <h3>Fast-Tracking Gimbal (Graduation Project)</h3>
-          <p>3-DOF gimbal with fuzzy-PID closed-loop control and IMU/vision sensor fusion, validated on a Stewart platform under simulated disturbances. Published at IEEE CoDIT 2026.</p>
-          <div class="tag-row"><span class="tag">SolidWorks</span><span class="tag">Fuzzy PID</span><span class="tag">YOLOv8</span></div>
-          <a class="card-link" href="#" target="_blank" rel="noopener">Watch on YouTube →</a>
+          <h3>Graduation Project: Fast-Tracking Gimbal</h3>
+          <p>Engineered and fabricated a 3-DOF fast-tracking gimbal system, optimizing the mechanical structure and kinematics for dynamic stability in unstable environments. Developed real-time closed-loop control algorithms (Fuzzy PID) and integrated IMU/vision sensor fusion to achieve high-speed, accurate target tracking. Validated control loops on a Stewart platform disturbance simulator.</p>
+          <div class="skills-learned-block">
+            <div class="skills-learned-title">Skills &amp; Tools</div>
+            <div class="tag-row"><span class="tag">Fuzzy PID</span><span class="tag">YOLOv8</span><span class="tag">Sensor Fusion</span><span class="tag">Raspberry Pi 4</span></div>
+          </div>
         </div>
+
         <div class="card">
-          <h3>Autonomous Mobile Manipulator</h3>
-          <p>5-DOF robotic arm on a 4-swerve-wheel mobile base. ROS 2 + Gazebo path planning with YOLOv5 perception for pick-and-place.</p>
-          <div class="tag-row"><span class="tag">ROS 2</span><span class="tag">Gazebo</span><span class="tag">YOLOv5</span></div>
-          <a class="card-link" href="#" target="_blank" rel="noopener">View on GitHub →</a>
+          <h3>Mobile Manipulator (Autonomous Pick-and-Place)</h3>
+          <p>Engineered a 5-DOF robotic arm mounted on a 4-swerve-wheel autonomous mobile platform, utilizing SolidWorks for mechanical design and rapid prototyping. Implemented YOLOv5 for real-time object detection and integrated ROS 2 with Gazebo for kinematic simulation and autonomous path planning.</p>
+          <div class="skills-learned-block">
+            <div class="skills-learned-title">Skills &amp; Tools</div>
+            <div class="tag-row"><span class="tag">ROS 2</span><span class="tag">YOLOv5</span><span class="tag">Gazebo</span><span class="tag">Swerve Drive</span><span class="tag">Inverse Kinematics</span></div>
+          </div>
         </div>
+
+        <div class="card">
+          <h3>Electric Vehicle Rally (EVER V)</h3>
+          <p>Led the mechanical design and FEA simulation of a high-performance steering system using SolidWorks and ANSYS, optimizing vehicle dynamics and handling. Managed component procurement, systems integration, and funding, representing E-JUST among shortlisted finalist teams.</p>
+          <div class="skills-learned-block">
+            <div class="skills-learned-title">Skills &amp; Tools</div>
+            <div class="tag-row"><span class="tag">SolidWorks</span><span class="tag">ANSYS FEA</span><span class="tag">MATLAB</span><span class="tag">Vehicle Dynamics</span></div>
+          </div>
+        </div>
+
         <div class="card">
           <h3>Self-Balancing Robot Automation</h3>
-          <p>Inverted-pendulum modeling and chassis design for a two-wheeled balancing robot, stabilized with PID and Fuzzy Logic on NI myRIO.</p>
-          <div class="tag-row"><span class="tag">NI myRIO</span><span class="tag">LabVIEW</span><span class="tag">PID</span></div>
-          <a class="card-link" href="#" target="_blank" rel="noopener">Watch on YouTube →</a>
+          <p>Modeled inverted pendulum dynamics and engineered the mechanical chassis to optimize the physical mass distribution for a two-wheeled balancing robot. Deployed real-time closed-loop control systems using NI myRIO and LabVIEW, tuning PID and Fuzzy Logic controllers with direct IMU feedback.</p>
+          <div class="skills-learned-block">
+            <div class="skills-learned-title">Skills &amp; Tools</div>
+            <div class="tag-row"><span class="tag">NI myRIO</span><span class="tag">LabVIEW</span><span class="tag">PID</span><span class="tag">Fuzzy Control</span><span class="tag">Inverted Pendulum</span></div>
+          </div>
         </div>
-        <div class="card">
-          <h3>EV Steering System — EVER V Rally</h3>
-          <p>Led mechanical design and FEA of a high-performance steering system; managed procurement and systems integration for E-JUST's inaugural EV rally entry.</p>
-          <div class="tag-row"><span class="tag">SolidWorks</span><span class="tag">ANSYS</span><span class="tag">MATLAB</span></div>
-          <a class="card-link" href="#" target="_blank" rel="noopener">View credential →</a>
-        </div>
-        <div class="card">
-          <h3>Deep Q-Network Manipulator Control</h3>
-          <p>Trained a DQN agent in a custom simulation environment to command a 2-link manipulator to X,Y goal coordinates.</p>
-          <div class="tag-row"><span class="tag">TensorFlow</span><span class="tag">Keras</span><span class="tag">RL</span></div>
-          <a class="card-link" href="#" target="_blank" rel="noopener">View on GitHub →</a>
-        </div>
-        <div class="card">
-          <h3>EKF Mobile Robot Localization</h3>
-          <p>Extended Kalman Filter built from scratch in Python to localize a differential-drive robot by fusing landmark bearing/range data with odometry.</p>
-          <div class="tag-row"><span class="tag">Python</span><span class="tag">Sensor Fusion</span></div>
-          <a class="card-link" href="#" target="_blank" rel="noopener">View on GitHub →</a>
-        </div>
-        <div class="card">
-          <h3>5-DOF Arm Trajectory Control</h3>
-          <p>Rigid-body dynamics in Simscape Multibody; five tuned continuous-time PID controllers commanding the end-effector through circular joint-space trajectories.</p>
-          <div class="tag-row"><span class="tag">MATLAB</span><span class="tag">Simulink</span></div>
-          <a class="card-link" href="#" target="_blank" rel="noopener">View on GitHub →</a>
-        </div>
-        <div class="card">
-          <h3>Multi-Legged Spider Robot</h3>
-          <p>Mechanical linkage and structural design for biomimetic multi-legged locomotion, with synchronized multi-joint gait algorithms.</p>
-          <div class="tag-row"><span class="tag">SolidWorks</span><span class="tag">Embedded C</span></div>
-          <a class="card-link" href="#" target="_blank" rel="noopener">View on GitHub →</a>
-        </div>
+
         <div class="card">
           <h3>MATE ROV Competition</h3>
-          <p>Hydrodynamic hull design and functional pneumatic grippers for a Remotely Operated Underwater Vehicle; 2nd place at Go Dive Derby.</p>
-          <div class="tag-row"><span class="tag">Pneumatics</span><span class="tag">FluidSIM</span></div>
-          <a class="card-link" href="#" target="_blank" rel="noopener">View credential →</a>
+          <p>Designed the hydrodynamic hull configurations and developed fully functional pneumatic grippers for a Remotely Operated Underwater Vehicle (ROV). Orchestrated the manufacturing process and integration of underwater sensors and control logic under competitive constraints.</p>
+          <div class="skills-learned-block">
+            <div class="skills-learned-title">Skills &amp; Tools</div>
+            <div class="tag-row"><span class="tag">SolidWorks</span><span class="tag">Pneumatics</span><span class="tag">FluidSIM</span><span class="tag">Underwater Robotics</span></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Micromouse Maze-Solving Robot</h3>
+          <p>Designed a compact, highly agile two-wheel robot chassis with optimized sensor mounts for precise, real-time wall detection and balancing. Developed autonomous maze-solving flood-fill algorithms and integrated embedded microcontrollers to navigate dense layouts.</p>
+          <div class="skills-learned-block">
+            <div class="skills-learned-title">Skills &amp; Tools</div>
+            <div class="tag-row"><span class="tag">C/C++</span><span class="tag">Microcontrollers</span><span class="tag">PCB Design</span><span class="tag">Algorithms</span></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Smart Chess Board</h3>
+          <p>Engineered the hardware architecture and multiplexer circuitry using 9 MUX 8x1 matrices to accurately map and detect physical chess piece placement. Programmed the system's core software, integrating piece-tracking algorithms with physical control layers.</p>
+          <div class="skills-learned-block">
+            <div class="skills-learned-title">Skills &amp; Tools</div>
+            <div class="tag-row"><span class="tag">Embedded C</span><span class="tag">Circuit Design</span><span class="tag">PCB Design</span><span class="tag">Multiplexing Matrix</span></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Multi-Legged Spider Robot</h3>
+          <p>Designed the mechanical linkages and structural prototype in CAD to achieve stable, biomimetic multi-legged locomotion. Synchronized multi-joint actuation by integrating embedded controllers, servo motor constraints, and custom gaits.</p>
+          <div class="skills-learned-block">
+            <div class="skills-learned-title">Skills &amp; Tools</div>
+            <div class="tag-row"><span class="tag">SolidWorks</span><span class="tag">Kinematics Links</span><span class="tag">Microcontrollers</span><span class="tag">Gait Algorithms</span></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>AI Classification Robot (mini-Detecto)</h3>
+          <p>Developed a vision-based robotic system that utilizes a live camera feed and Arduino-controlled servo motors to physically classify and point at recognized objects. Implemented and evaluated multiple architectures—including Classical ANNs, CNNs, and Transfer Learning (ResNet/GoogLeNet).</p>
+          <div class="skills-learned-block">
+            <div class="skills-learned-title">Skills &amp; Tools</div>
+            <div class="tag-row"><span class="tag">Python</span><span class="tag">TensorFlow</span><span class="tag">CNNs</span><span class="tag">Transfer Learning</span><span class="tag">Arduino</span></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>DQN for Manipulator Control</h3>
+          <p>Trained a Deep Q-Network (DQN) algorithm to autonomously control a two-link robotic manipulator, guiding its joint angles to reach specific X, Y coordinate goals. Engineered a custom simulation environment to discretize action spaces and iteratively optimize runtime parameters.</p>
+          <div class="skills-learned-block">
+            <div class="skills-learned-title">Skills &amp; Tools</div>
+            <div class="tag-row"><span class="tag">TensorFlow</span><span class="tag">Keras</span><span class="tag">Reinforcement Learning</span><span class="tag">DQN</span></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>EKF Mobile Robot Localization</h3>
+          <p>Programmed an Extended Kalman Filter (EKF) algorithm from scratch in Python to accurately localize a differential drive mobile robot within a mapped environment. Fused simulated sensor telemetry (distance and bearing of landmarks) with odometry state estimation loops.</p>
+          <div class="skills-learned-block">
+            <div class="skills-learned-title">Skills &amp; Tools</div>
+            <div class="tag-row"><span class="tag">Python</span><span class="tag">Sensor Fusion</span><span class="tag">EKF</span><span class="tag">Mobile Robotics</span></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>5-DOF Robotic Arm Trajectory Control</h3>
+          <p>Modeled the rigid-body dynamics and joint mechanics of a 5-DOF articulated robotic arm utilizing MATLAB Simscape Multibody. Designed and tuned five independent continuous-time PID controllers in Simulink to execute precise joint-space trajectory tracking circles.</p>
+          <div class="skills-learned-block">
+            <div class="skills-learned-title">Skills &amp; Tools</div>
+            <div class="tag-row"><span class="tag">MATLAB</span><span class="tag">Simulink</span><span class="tag">Simscape Multibody</span><span class="tag">PID Tuning</span></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Closed-Loop DC Motor Speed Control</h3>
+          <p>Engineered a closed-loop motor control circuit utilizing an ATmega32 MCU, an L298 H-Bridge, and a rotary encoder to capture precise rotational speed feedback. Programmed a Proportional-Derivative (PD) controller to dynamically adjust PWM duty cycles tracking parameters on a 16x02 LCD screen.</p>
+          <div class="skills-learned-block">
+            <div class="skills-learned-title">Skills &amp; Tools</div>
+            <div class="tag-row"><span class="tag">ATmega32</span><span class="tag">Embedded C</span><span class="tag">PD Control</span><span class="tag">Hardware Loops</span></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Fast Object Tracking System</h3>
+          <p>Designed an automated, closed-loop object tracking system utilizing a 5-channel IR sensor array and an Arduino Uno to dynamically direct a servo-actuated laser pointer at moving targets. Developed a real-time data acquisition and control interface in LabVIEW.</p>
+          <div class="skills-learned-block">
+            <div class="skills-learned-title">Skills &amp; Tools</div>
+            <div class="tag-row"><span class="tag">LabVIEW</span><span class="tag">PD Controller</span><span class="tag">Arduino</span><span class="tag">Data Acquisition</span></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Bare-Metal Stepper Motor Controller</h3>
+          <p>Developed a bare-metal embedded C program for an ATmega32 microcontroller to precisely manage the stepping modes (full/half) and rotational direction of a stepper motor. Simulated the complete hardware architecture in SimulIDE incorporating pushbutton registers.</p>
+          <div class="skills-learned-block">
+            <div class="skills-learned-title">Skills &amp; Tools</div>
+            <div class="tag-row"><span class="tag">Embedded C</span><span class="tag">ATmega32</span><span class="tag">SimulIDE</span><span class="tag">Bare-Metal Firmware</span></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Automated Mobile Oil Mixing Unit</h3>
+          <p>Designed a mobile, C-frame mixing unit for automotive oils, engineering a 25mm stainless steel 304 transmission shaft to reliably transmit 48 Nm of torque at 300 RPM. Developed the vertical lifting mechanism utilizing a power screw and linear guides with hardware interlocks.</p>
+          <div class="skills-learned-block">
+            <div class="skills-learned-title">Skills &amp; Tools</div>
+            <div class="tag-row"><span class="tag">SolidWorks</span><span class="tag">Mechanical Transmission</span><span class="tag">Power Screw</span><span class="tag">Safety Factors</span></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Articulated Intensive Care Bed</h3>
+          <p>Engineered a comprehensive 3D CAD model and exploded assembly of an articulated medical care bed, detailing the mechanical linkages and actuator integrations required for multi-axis patient positioning. Conducted structural Finite Element Analysis (FEA) validating stress distribution.</p>
+          <div class="skills-learned-block">
+            <div class="skills-learned-title">Skills &amp; Tools</div>
+            <div class="tag-row"><span class="tag">SolidWorks CAD</span><span class="tag">Power Transmission</span><span class="tag">ANSYS FEA</span><span class="tag">DFMA Assembly</span></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Automated Sheet Metal Thickness Control System</h3>
+          <p>Engineered the mechanical architecture and actuation systems for a high-temperature sheet metal hot-rolling unit, sizing a heavy-duty motor and 20:1 gearbox for a 3675 kN compressive load. Modeled the multi-body plant dynamics using Simscape Multibody and developed closed-loop PID architectures in Simulink. Integrated non-contact laser displacement sensors and a Siemens S7-1500 PLC layer.</p>
+          <div class="skills-learned-block">
+            <div class="skills-learned-title">Skills &amp; Tools</div>
+            <div class="tag-row"><span class="tag">Simulink</span><span class="tag">Simscape Multibody</span><span class="tag">PID Control</span><span class="tag">Siemens S7-1500 PLC</span></div>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- PUBLICATIONS -->
     <section class="tab-panel" id="panel-publications" role="tabpanel" aria-labelledby="tab-publications" tabindex="0" hidden>
-      <h2 class="section-title">Publications</h2>
-      <p class="section-sub">Peer-reviewed &amp; in preparation</p>
+      <h2 class="section-title">📄 Peer-Reviewed Publications</h2>
+      <p class="section-sub">Conference Proceedings &amp; Work in Progress</p>
 
       <div class="pub-entry">
-        <span class="pub-tag">Accepted · IEEE CoDIT 2026</span>
+        <span class="pub-tag">Published · IEEE CoDIT 2026</span>
         <p class="entry-title" style="margin-bottom:4px;">Fuzzy Logic Control for Fast-Tracking Gimbals in Velocity Space</p>
-        <p class="entry-org" style="margin-bottom:8px;">Ammar Abdelwahab, et al. — International Conference on Control, Decision and Information Technologies</p>
-        <p style="color:var(--ink-soft); font-size:0.9rem; margin:0;">Closed-loop kinematic control combining a YOLO-based tracking architecture with a Kalman-filtered inertial localization framework, integrated onto a dynamic Stewart platform to track high-speed targets under simulated instability.</p>
+        <p class="entry-org" style="margin-bottom:8px;">Ammar Abdelwahab, Prof. Ayman A. Nada, et al. — International Conference on Control, Decision and Information Technologies</p>
+        <p style="color:var(--ink-soft); font-size:0.95rem; margin:0; text-align: justify; text-justify: inter-word;">Developed explicit kinematic control loops linking high-speed YOLO visual tracking algorithms alongside precise Kalman filter state matrices to balance real-time tracking accuracy on variable multi-axis dynamic foundations.</p>
       </div>
 
       <div class="pub-entry">
-        <span class="pub-tag">In preparation</span>
-        <p class="entry-title" style="margin-bottom:4px;">Self-Balancing Robot: Stabilization &amp; Dynamic Control (working title)</p>
-        <p class="entry-org" style="margin-bottom:8px;">E-JUST · Advisor: Prof. Ayman A. Nada</p>
-        <p style="color:var(--ink-soft); font-size:0.9rem; margin:0;">Advanced system optimization and experimental data collection on a two-wheeled balancing robot, ahead of an upcoming journal submission.</p>
+        <span class="pub-tag">In Preparation · Academic Journal Selection</span>
+        <p class="entry-title" style="margin-bottom:4px;">Self-Balancing Robot: Stabilization &amp; Dynamic Control Optimization</p>
+        <p class="entry-org" style="margin-bottom:8px;">Ammar Adel Abdelwahab, Advisor: Prof. Ayman A. Nada — E-JUST Robotics Lab</p>
+        <p style="color:var(--ink-soft); font-size:0.95rem; margin:0; text-align: justify; text-justify: inter-word;">Formulating system tuning limits and experimental data matrices analyzing nested loop structures for an inverted pendulum platform using direct inertial tracking feedback networks.</p>
       </div>
     </section>
 
-    <!-- SKILLS -->
     <section class="tab-panel" id="panel-skills" role="tabpanel" aria-labelledby="tab-skills" tabindex="0" hidden>
-      <h2 class="section-title">Skills</h2>
-      <p class="section-sub">Tools &amp; technical range</p>
+      <h2 class="section-title">🛠️ Technical Range</h2>
+      <p class="section-sub">Software Frameworks &amp; Industrial Tooling</p>
 
       <div class="skill-group">
-        <h3>CAD &amp; Mechanical Design</h3>
+        <h3>Robotics Frameworks</h3>
         <div class="pill-row">
-          <span class="pill">SolidWorks</span><span class="pill">CATIA</span><span class="pill">AutoCAD</span><span class="pill">ANSYS</span><span class="pill">Adams</span><span class="pill">DFMA</span><span class="pill">Pneumatics &amp; Hydraulics</span><span class="pill">Sheet Metal</span><span class="pill">3D Printing</span>
+          <span class="pill">ROS 2</span><span class="pill">Gazebo</span><span class="pill">CoppeliaSim</span><span class="pill">Adams</span><span class="pill">Inverse / Forward Kinematics</span><span class="pill">Path Planning</span>
         </div>
       </div>
       <div class="skill-group">
         <h3>Control Systems</h3>
         <div class="pill-row">
-          <span class="pill">PID</span><span class="pill">Fuzzy Logic</span><span class="pill">Fuzzy-PID</span><span class="pill">Kalman &amp; Extended Kalman Filters</span><span class="pill">Sensor Fusion</span>
+          <span class="pill">PID</span><span class="pill">Fuzzy Logic</span><span class="pill">Fuzzy PID</span><span class="pill">Kalman Filters</span><span class="pill">Extended Kalman Filters (EKF)</span><span class="pill">Sensor Fusion</span>
         </div>
       </div>
       <div class="skill-group">
-        <h3>Robotics Frameworks</h3>
+        <h3>Programming</h3>
         <div class="pill-row">
-          <span class="pill">ROS 2</span><span class="pill">Gazebo</span><span class="pill">CoppeliaSim</span><span class="pill">Inverse / Forward Kinematics</span><span class="pill">Path Planning</span>
+          <span class="pill">Python</span><span class="pill">C / C++</span><span class="pill">MATLAB</span><span class="pill">Simulink</span><span class="pill">Simscape</span><span class="pill">LabVIEW</span><span class="pill">Git</span><span class="pill">Linux</span>
         </div>
       </div>
       <div class="skill-group">
         <h3>AI for Robotics</h3>
         <div class="pill-row">
-          <span class="pill">PyTorch</span><span class="pill">TensorFlow</span><span class="pill">YOLO / OpenCV</span><span class="pill">Reinforcement Learning (DQN)</span>
+          <span class="pill">PyTorch</span><span class="pill">TensorFlow</span><span class="pill">YOLO</span><span class="pill">Reinforcement Learning (DQN)</span>
         </div>
       </div>
       <div class="skill-group">
@@ -657,80 +799,73 @@
         </div>
       </div>
       <div class="skill-group">
-        <h3>Programming &amp; Simulation</h3>
+        <h3>CAD &amp; Mechanical Design</h3>
         <div class="pill-row">
-          <span class="pill">Python</span><span class="pill">C / C++</span><span class="pill">MATLAB / Simulink / Simscape</span><span class="pill">LabVIEW</span><span class="pill">Git</span><span class="pill">Linux</span>
-        </div>
-      </div>
-      <div class="skill-group">
-        <h3>Languages</h3>
-        <div class="pill-row">
-          <span class="pill">Arabic — Native</span><span class="pill">English — Professional</span><span class="pill">German — Beginner</span><span class="pill">Japanese — Beginner</span>
+          <span class="pill">SolidWorks</span><span class="pill">ANSYS</span><span class="pill">CATIA</span><span class="pill">Pneumatics &amp; Hydraulics</span>
         </div>
       </div>
     </section>
 
-    <!-- HONORS -->
     <section class="tab-panel" id="panel-honors" role="tabpanel" aria-labelledby="tab-honors" tabindex="0" hidden>
-      <h2 class="section-title">Honors &amp; Activities</h2>
-      <p class="section-sub">Awards, scholarships &amp; leadership</p>
+      <h2 class="section-title">🏆 Distinctions &amp; Honors</h2>
+      <p class="section-sub">Awards, Grants &amp; Academic Recognition</p>
 
-      <div class="honor-grid">
-        <div class="honor"><p class="h-title">Dean's List &amp; Academic Excellence — CGPA 3.8/4.0</p><p class="h-org">E-JUST · Mar 2026</p></div>
-        <div class="honor"><p class="h-title">Undergraduate Research Grant — $1,500</p><p class="h-org">E-JUST · Jan 2026</p></div>
-        <div class="honor"><p class="h-title">2nd Place, Go Dive Derby (ROV Competition) — 10,000 EGP</p><p class="h-org">British University in Egypt · Jul 2024</p></div>
-        <div class="honor"><p class="h-title">Sawiris Distinction Scholarship — Full Ride</p><p class="h-org">Amideast &amp; Sawiris Foundation · Sep 2021</p></div>
-        <div class="honor"><p class="h-title">Top 10 Ranked Student, Fayoum Governorate</p><p class="h-org">Thanaweya Amma · Jul 2021</p></div>
-      </div>
+      <div class="card-grid">
+        <div class="card">
+          <div class="entry-head">
+            <h3>Dean's List &amp; Academic Honor</h3>
+            <span class="entry-date">March 2026</span>
+          </div>
+          <p>Consistently recognized for elite academic performance in the Mechatronics and Robotics Engineering program at E-JUST, earning an "Excellent" distinction and A+ grades in all capstone projects.</p>
+        </div>
 
-      <h3 style="margin-top:32px; font-size:1rem;">Leadership</h3>
-      <div class="entry" style="border-top:none; padding-top:12px;">
-        <div class="entry-head">
-          <div><p class="entry-title">Head of Steering Systems</p><p class="entry-org">E-JUST Racing Team</p></div>
-          <span class="entry-date">Jul 2022 – Jun 2025</span>
+        <div class="card">
+          <div class="entry-head">
+            <h3>Undergraduate Research Grant</h3>
+            <span class="entry-date">Jan 2026</span>
+          </div>
+          <p>Secured a highly competitive $1,500 research grant from E-JUST to finance the hardware procurement, components fabrication, and testing development of the Fast-Tracking Gimbal graduation system.</p>
         </div>
-        <ul>
-          <li>Designed and developed the steering architecture for the Shell Eco-marathon urban electric vehicle.</li>
-          <li>Directed the end-to-end steering system design and manufacturing for E-JUST's first EV rally entry.</li>
-        </ul>
-      </div>
-      <div class="entry">
-        <div class="entry-head">
-          <div><p class="entry-title">Technical Member &amp; Instructor</p><p class="entry-org">E-JUST Robotics Club</p></div>
-          <span class="entry-date">Mar 2023 – Feb 2025</span>
+
+        <div class="card">
+          <div class="entry-head">
+            <h3>2nd Place Winner — Go Dive Derby</h3>
+            <span class="entry-date">July 2024</span>
+          </div>
+          <p>Won 2nd place and a 10,000 EGP prize against top national engineering groups by presenting a robust Remotely Operated underwater Vehicle (ROV), earning an official qualification to represent Egypt in the US global competition.</p>
         </div>
-        <ul>
-          <li>Mentored 30+ students through robotics workshops spanning entry-level to advanced mechatronics.</li>
-          <li>Contributed to Aimbot and Smart Chess Board projects, integrating hardware, software, and computer vision.</li>
-        </ul>
+
+        <div class="card">
+          <div class="entry-head">
+            <h3>Sawiris Distinction Scholarship</h3>
+            <span class="entry-date">Sep 2021</span>
+          </div>
+          <p>Awarded a highly competitive, full-ride merit scholarship managed via Amideast and the Sawiris Foundation to pursue a Bachelor of Engineering at E-JUST based on leadership and academic metrics.</p>
+        </div>
+
+        <div class="card">
+          <div class="entry-head">
+            <h3>Top 10 Ranked Student (Governorate)</h3>
+            <span class="entry-date">July 2021</span>
+          </div>
+          <p>Achieved a top 10 academic ranking across the entire Fayoum Governorate out of tens of thousands of competitive entries in the Egyptian General Secondary Education Certificate (Thanaweya Amma).</p>
+        </div>
       </div>
     </section>
 
-    <!-- CONTACT -->
     <section class="tab-panel" id="panel-contact" role="tabpanel" aria-labelledby="tab-contact" tabindex="0" hidden>
-      <h2 class="section-title">Contact</h2>
-      <p class="section-sub">Let's talk robotics</p>
-      <p style="max-width:520px; color:var(--ink-soft);">Open to R&amp;D, mechatronics, and robotics-control roles, as well as research collaborations in control theory and AI for robotics.</p>
+      <h2 class="section-title">📞 Connect</h2>
+      <p class="section-sub">Professional Communication</p>
       <div class="contact-row" style="margin-top:16px;">
-        <a href="mailto:ammaradelabdeltwab@gmail.com">✉ ammaradelabdeltwab@gmail.com</a>
-        <a href="tel:+201069593477">☎ +20 106 959 3477</a>
-        <a href="https://linkedin.com/in/ammaradel" target="_blank" rel="noopener">LinkedIn</a>
-        <a href="https://github.com/ammaradel-1" target="_blank" rel="noopener">GitHub</a>
-        <a href="https://grabcad.com/ammar.adel-1" target="_blank" rel="noopener">GrabCAD</a>
+        <a href="mailto:ammaradelabdeltwab@gmail.com"><i class="fa-regular fa-envelope"></i> ammaradelabdeltwab@gmail.com</a>
+        <a href="tel:+201069593477"><i class="fa-solid fa-phone"></i> +20 106 959 3477</a>
       </div>
     </section>
 
   </main>
 
-  <div class="titleblock">
-    <div><span class="label">Drawn by</span><span class="value">Ammar Adel</span></div>
-    <div><span class="label">Discipline</span><span class="value">Mechatronics / Robotics</span></div>
-    <div><span class="label">Rev.</span><span class="value">2026</span></div>
-    <div><span class="label">Sheet</span><span class="value">1 of 1 — NTS</span></div>
-  </div>
-
   <footer class="site-footer">
-    © 2026 Ammar Adel · Built with a blueprint theme — toggle light/dark above
+    © 2026 Ammar Adel Abdelwahab · Engineered for high performance
   </footer>
 
 </div>
@@ -739,30 +874,23 @@
 (function(){
   const root = document.documentElement;
   const themeSwitch = document.getElementById('themeSwitch');
-  const themeLabel = document.getElementById('theme-label');
 
   function applyTheme(theme){
     root.setAttribute('data-theme', theme);
     themeSwitch.setAttribute('aria-checked', theme === 'dark' ? 'true' : 'false');
-    themeLabel.textContent = theme === 'dark' ? 'Dark cyanotype' : 'Light print';
     try{ localStorage.setItem('ammar-portfolio-theme', theme); }catch(e){}
   }
 
-  let saved = 'light';
+  let saved = 'dark';
   try{
-    saved = localStorage.getItem('ammar-portfolio-theme');
-    if(!saved){
-      saved = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-    }
+    saved = localStorage.getItem('ammar-portfolio-theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
   }catch(e){}
   applyTheme(saved);
 
   themeSwitch.addEventListener('click', function(){
-    const current = root.getAttribute('data-theme');
-    applyTheme(current === 'dark' ? 'light' : 'dark');
+    applyTheme(root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
   });
 
-  // Tabs
   const tabs = Array.from(document.querySelectorAll('[role="tab"]'));
   const panels = Array.from(document.querySelectorAll('[role="tabpanel"]'));
 
@@ -773,23 +901,71 @@
       t.tabIndex = selected ? 0 : -1;
     });
     panels.forEach(p => {
-      p.hidden = ('panel-' + tab.id.replace('tab-','')) !== p.id;
+      const targetPanelId = 'panel-' + tab.id.replace('tab-','');
+      if (p.id === targetPanelId) {
+        p.removeAttribute('hidden');
+      } else {
+        p.setAttribute('hidden', '');
+      }
     });
-    tab.focus();
   }
 
-  tabs.forEach((tab, i) => {
+  tabs.forEach((tab) => {
     tab.addEventListener('click', () => selectTab(tab));
-    tab.addEventListener('keydown', (e) => {
-      let newIndex = null;
-      if(e.key === 'ArrowRight') newIndex = (i + 1) % tabs.length;
-      if(e.key === 'ArrowLeft') newIndex = (i - 1 + tabs.length) % tabs.length;
-      if(e.key === 'Home') newIndex = 0;
-      if(e.key === 'End') newIndex = tabs.length - 1;
-      if(newIndex !== null){
-        e.preventDefault();
-        selectTab(tabs[newIndex]);
-      }
+  });
+
+  // Dynamic Drafting Table Spotlight Subsystem
+  document.addEventListener('mousemove', (e) => {
+    document.body.style.setProperty('--mouse-x', `${e.clientX}px`);
+    document.body.style.setProperty('--mouse-y', `${e.clientY}px`);
+    
+    // Smooth grid shift feedback loop
+    const shiftX = (e.clientX / window.innerWidth) * 8;
+    const shiftY = (e.clientY / window.innerHeight) * 8;
+    document.body.style.backgroundPosition = `${shiftX}px ${shiftY}px`;
+  });
+
+  // Staggered multi-ring Sonar Echo Pulse
+  document.addEventListener('click', (e) => {
+    const totalRings = 4;
+    for (let i = 0; i < totalRings; i++) {
+      setTimeout(() => {
+        const echo = document.createElement('div');
+        echo.className = 'radar-echo';
+        echo.style.left = `${e.clientX}px`;
+        echo.style.top = `${e.clientY}px`;
+        document.body.appendChild(echo);
+        
+        setTimeout(() => {
+          echo.remove();
+        }, 700);
+      }, i * 200); // 200ms generation latency latency latency
+    }
+  });
+
+  // Dynamic Card Parallax Tilting Logic
+  const cards = document.querySelectorAll('.card');
+  cards.forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const cX = e.clientX - rect.left;
+      const cY = e.clientY - rect.top;
+      
+      card.style.setProperty('--c-mouse-x', `${cX}px`);
+      card.style.setProperty('--c-mouse-y', `${cY}px`);
+
+      const x = cX - (rect.width / 2);
+      const y = cY - (rect.height / 2);
+      const rotateX = -(y / rect.height) * 8;
+      const rotateY = (x / rect.width) * 8;
+      
+      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
+      card.style.transition = 'none';
+    });
+
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = '';
+      card.style.transition = 'transform var(--transition), border-color var(--transition)';
     });
   });
 })();
